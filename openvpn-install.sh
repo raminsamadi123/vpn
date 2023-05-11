@@ -14,7 +14,10 @@ if [ -f "$ufw" ]; then
 fi
 
 sudo apt-get update -y
-sudo apt-get -y install openvpn-as | sudo tee openvpncredentials.txt
+sudo apt-get -y install openvpn-as | sudo tee "$HOME/openvpncredentials.txt"
+
+username="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $6 }' | sed 's/"//g')"
+password="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $9 }' | sed 's/"//g')"
 
 clear
-echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n2. Install Openvpn Connect on Windows\n3. Type Client UI https://$ip_address:943/"
+echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n2. Login with\nusername: $username\npassword: $password\n3. Install Openvpn Connect on Windows\n4. Type Client UI https://$ip_address:943/"
