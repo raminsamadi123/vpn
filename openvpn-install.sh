@@ -15,4 +15,6 @@ fi
 
 sudo apt-get update -y
 sudo apt-get -y install openvpn-as | sudo tee openvpncredentials.txt
+
+clear
 echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n2. Install Openvpn Connect on Windows\n3. Type Client UI https://$ip_address:943/"
