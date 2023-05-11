@@ -20,4 +20,8 @@ username="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $6
 password="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $9 }' | sed 's/"//g')"
 
 clear
+<<<<<<< HEAD
 echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: https://$ip_address:943/\n"
+=======
+echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n\n2. Login with\nusername: $username\npassword: $password\n\n3. Install Openvpn Connect on Windows\n\n4. Type Client UI https://$ip_address:943/"
+>>>>>>> 769a4180b955d2206bbdd82a86b98ef76c81ea7b
