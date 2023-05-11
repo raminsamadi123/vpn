@@ -13,5 +13,11 @@ if [ -f "$ufw" ]; then
 	sudo ufw allow 943,1194/udp
 fi
 
-sudo apt-get update -y && sudo apt-get -y install openvpn-as
-echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n2. Install Openvpn Connect on Windows\n3. Type Client UI https://$ip_address:943/"
+sudo apt-get update -y
+sudo apt-get -y install openvpn-as | sudo tee "$HOME/openvpncredentials.txt"
+
+username="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $6 }' | sed 's/"//g')"
+password="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $9 }' | sed 's/"//g')"
+
+clear
+echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: https://$ip_address:943/\n"
