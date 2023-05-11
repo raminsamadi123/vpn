@@ -13,5 +13,6 @@ if [ -f "$ufw" ]; then
 	sudo ufw allow 943,1194/udp
 fi
 
-sudo apt-get update -y && sudo apt-get -y install openvpn-as
+sudo apt-get update -y
+sudo apt-get -y install openvpn-as | sudo tee openvpncredentials.txt
 echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n2. Install Openvpn Connect on Windows\n3. Type Client UI https://$ip_address:943/"
