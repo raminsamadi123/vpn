@@ -23,3 +23,5 @@ password="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $9
 
 clear
 echo -e "To access the OpenVPN:\n1. Type in Google Chrome: $admin_ui\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: $client_ui\n"
+
+echo -e "To access the OpenVPN:\n1. Type in Google Chrome: $admin_ui\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: $client_ui\n" >"/tmp/openvpn-guide"
