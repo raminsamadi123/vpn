@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-ip_address="$(ip address | grep "inet" | grep "enp" | awk -F '/' '{print $1}' | awk '{print $2}')"
 ufw="/usr/bin/ufw"
 
 sudo apt-get update -y && sudo apt-get -y install ca-certificates wget net-tools gnupg
@@ -16,8 +15,11 @@ fi
 sudo apt-get update -y
 sudo apt-get -y install openvpn-as | sudo tee "$HOME/openvpncredentials.txt"
 
+admin_ui="$(grep "admin" "$HOME/openvpncredentials.txt" | awk '{ print $3 }')"
+client_ui="$(grep "Client" "$HOME/openvpncredentials.txt" | awk '{ print $3 }')"
+
 username="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $6 }' | sed 's/"//g')"
 password="$(grep "account with" "$HOME/openvpncredentials.txt" | awk '{ print $9 }' | sed 's/"//g')"
 
 clear
-echo -e "To access the OpenVPN:\n1. Type in Google Chrome: https://$ip_address:943/admin\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: https://$ip_address:943/\n"
+echo -e "To access the OpenVPN:\n1. Type in Google Chrome: $admin_ui\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: https://openvpn.net/client-connect-vpn-for-windows/\n\n4. Type in OpenVPN Connect: $client_ui\n"
