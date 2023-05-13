@@ -36,4 +36,14 @@ password="$(grep "account with" "$log_file" | awk '{ print $9 }' | sed 's/"//g')
 
 # Output instructions on how to set up OpenVPN and save it in a guide file
 clear
-echo -e "To access the OpenVPN:\n1. Type in Google Chrome: $admin_ui\n\n2. Login with\n	username: $username\n	password: $password\n\n3. Install OpenVPN Connect on Windows: $client_connect_vpn_for_windows\n\n4. Type in OpenVPN Connect: $client_ui\n" | tee "/var/log/openvpn-guide.log"
+echo "To access the OpenVPN:
+1. Type in Google Chrome: $admin_ui
+
+2. Login with
+      username: $username
+      password: $password
+
+3. Install OpenVPN Connect on Windows: $client_connect_vpn_for_windows
+
+4. Type in OpenVPN Connect: $client_ui
+" | tee "/var/log/openvpn-guide.log"
